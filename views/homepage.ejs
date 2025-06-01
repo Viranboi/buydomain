@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Domain Search</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://media.istockphoto.com/id/1430942039/vector/domain-names-domain-registration-website-name-url-address-web-page-hosting-on-website.jpg?s=612x612&w=0&k=20&c=fwxCgKWwQG1UUSyOf-tJp_ED_3fC6mqF4jIxVIYSY-w=') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1, h2, h3 {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    form {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 14px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #2980b9;
+    }
+
+    .result {
+      margin-top: 30px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .domain-card {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 5px solid #3498db;
+      margin-bottom: 20px;
+      animation: fadeIn 0.4s ease-out;
+    }
+
+    .domain-card h3 {
+      color: #2c3e50;
+    }
+
+    .domain-card p {
+      color: #333;
+    }
+
+    .domain-card a button {
+      margin-top: 10px;
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .domain-card a button:hover {
+      background-color: #27ae60;
+    }
+
+    section {
+      margin: 60px 0;
+    }
+
+    .section-bg {
+  background-image: url('https://t3.ftcdn.net/jpg/05/08/33/56/360_F_508335613_6D45KEFPPgZsh7jklYeEZTdVSyps3bqY.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 40px 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+    .offers {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .offer-card {
+      background: #f0f4f8;
+      border-radius: 10px;
+      padding: 20px;
+      flex: 1 1 250px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .offer-card h3 {
+      color: #2c3e50;
+    }
+
+    .offer-card p {
+      font-size: 0.95rem;
+    }
+
+    .trusted {
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #1abc9c;
+      margin-top: 20px;
+    }
+
+    footer {
+      margin-top: 60px;
+      background: rgba(0,0,0,0.6);
+      padding: 30px 20px;
+      color: #ddd;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .offers {
+        flex-direction: column;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      form {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1, h2 {
+        font-size: 1.5rem;
+      }
+
+      input, button {
+        font-size: 1rem;
+      }
+
+      .offer-card {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <header>
+      <div class="logo">
+        <img src="https://img.freepik.com/premium-psd/3d-rendering-green-geometric-shape_52659-1396.jpg?semt=ais_hybrid&w=740" alt="Logo">
+      </div>
+      <h1>Buy any Domain Name</h1>
+    </header>
+
+    <!-- Form -->
+    <form id="domainForm">
+      <input type="text" id="domainInput" placeholder="Enter domain (e.g. mysite.com)" required>
+      <input type="text" id="promoInput" placeholder="Promo Code (optional)">
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- Result -->
+    <div class="result" id="result"></div>
+
+    <!-- About Us -->
+    <section class="section-bg">
+      <h2>About Us</h2>
+      <p>We are a leading domain name registrar and web service provider helping millions of customers around the globe find the perfect online presence. With over a decade of experience, our mission is to make the web accessible, affordable, and secure for everyone.</p>
+    </section>
+
+    <!-- Special Offers -->
+    <section class="section-bg">
+      <h2>Our Special Offers</h2>
+      <div class="offers">
+        <div class="offer-card">
+          <h3>50% Off New Domains</h3>
+          <p>Register your dream domain now at half the price. Use code <strong>098607Promo</strong>.</p>
+        </div>
+        <div class="offer-card">
+          <h3>Free WHOIS Privacy</h3>
+          <p>Keep your information private with free WHOIS protection on all eligible domains.</p>
+        </div>
+        <div class="offer-card">
+          <h3>1 Year Free Hosting</h3>
+          <p>Get a full year of web hosting free when you register any domain with us.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Indicator -->
+    <section class="section-bg">
+      <h2>Trusted by Over 10,000,000 Companies</h2>
+      <p class="trusted">Join millions who trust our services worldwide to power their websites and brands.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 buydomain.onrender. All rights reserved.</p>
+      <p><a href="/terms">Terms of Service</a> | <a href="/privacy">Privacy Policy</a> | <a href="/contact">Contact Us</a></p>
+    </footer>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById('domainForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const domain = document.getElementById('domainInput').value.trim();
+      const promo = document.getElementById('promoInput').value.trim();
+      const resultDiv = document.getElementById('result');
+
+      if (!domain) return;
+
+      const available = Math.random() > 0.3;
+      let price = (Math.random() * 10 + 10).toFixed(2);
+      let promoMessage = '';
+
+      if (available && promo === '098607Promo') {
+        price = (price / 2).toFixed(2);
+        promoMessage = `<p style="color: green;"><strong>Promo Applied: 50% Off ✅</strong></p>`;
+      }
+
+      resultDiv.innerHTML = `
+        <div class="domain-card">
+          <h3>${domain}</h3>
+          <p>Status: <strong>${available ? 'Available ✅' : 'Not Available ❌'}</strong></p>
+          ${available ? `
+            ${promoMessage}
+            <p>Price: $${price}</p>
+            <a href="/form"><button>Buy Now</button></a>
+          ` : ''}
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>

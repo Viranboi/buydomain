@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://media.istockphoto.com/id/1430942039/vector/domain-names-domain-registration-website-name-url-address-web-page-hosting-on-website.jpg?s=612x612&w=0&k=20&c=fwxCgKWwQG1UUSyOf-tJp_ED_3fC6mqF4jIxVIYSY-w=') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      backdrop-filter: brightness(0.5);
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 600px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+
+    #available-message {
+      display: none;
+      margin-top: 30px;
+      padding: 20px;
+      background: #2ecc71;
+      border-radius: 10px;
+      color: #fff;
+      font-weight: bold;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Thank you for your submission!</h1>
+    <p>Thank you for <strong>modeling your domain name</strong> on our website.<br>
+    Please wait <strong>30 minutes</strong> to receive your domain name and account details.</p>
+    <div id="available-message">
+      🎉 Your domain name is now available!<br>
+      Use <strong>Domain Cheap</strong> to offer it quickly.<br><br>
+      <strong>Username:</strong> domain_user483<br>
+      <strong>Password:</strong> Dn@92klfWx!
+    </div>
+  </div>
+
+  <script>
+    // Simulated 30-minute delay (in real use: 1800000 ms)
+    setTimeout(() => {
+      document.getElementById("available-message").style.display = "block";
+    }, 1800000); // 30 minutes in milliseconds
+  </script>
+</body>
+</html>

